@@ -1,30 +1,46 @@
-<?php
 
-?>
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>Home Version 2</title>
-    <link rel="stylesheet" href="../css/HomeStyle.css" />
-    <link rel="icon"
-          type="image"
-          href="shell.png">
-</head>
+<link rel="stylesheet" href="../css/ForumStyle.css" />
 
 <header>
 
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="Home.html">Home</a></li>
-                    <li><a href="forum.html">Forum</a></li>
-                    <li><a href="Basic_Care.html">Basic Care</a></li>
-                    <li><a href="#">Diet</a></li>
-                    <li><a href="#">Shells</a></li>
-                </ul>
-            </nav>
-        </div>
+<?php
+        echo '<div class="container">';
+            echo '<nav>';
+                echo '<ul>';
+                   echo '<li><a href="index.php">Home</a></li>';
+                   echo '<li><a href="forum.php">Forum</a></li>';
+                   echo '<li><a href="basic_care.php">Basic Care</a></li>';
+                   echo '<li><a href="diet.php">Diet</a></li>';
+                   echo '<li><a href="shells.php">Shells</a></li>';
+                   echo '<li>';
+                   
+                        session_start();
 
+                        if(isset($_SESSION['signed_in']))
+                        {
+                            echo  $_SESSION['user_name'] . ' Not you? <a href="signout.php">Sign out</a>';
+                        }
+                        else
+                        {
+                            echo '<script>
+                            function openForm() {
+                                document.getElementById("myForm").style.display = "block";
+                            }
+                    
+                            function closeForm() {
+                                document.getElementById("myForm").style.display = "none";
+                            }
+                            </script>';
+                            
+                            echo '<li><a href="signin.php">Sign in</a></li>';
+                            echo '<li><a href="signup.php">Sign up</a></li>';
+                        }
+
+                    echo '</li>';
+                echo '</ul>';
+            echo '</nav>';
+        echo '</div>';
+
+        
+?>
 </header>
